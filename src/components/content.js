@@ -2,38 +2,7 @@ import { useState, useEffect } from "react";
 import StudentList from "./studentList";
 
 const Content = () => {
-	const [students, setStudents] = useState([
-		{
-			id: "1",
-			firstName: "John",
-			lastName: "Doe",
-			course: "MERN",
-		},
-		{
-			id: "2",
-			firstName: "Abby",
-			lastName: "Doe",
-			course: "Python",
-		},
-		{
-			id: "3",
-			firstName: "Ricky",
-			lastName: "Doe",
-			course: "MERN",
-		},
-		{
-			id: "4",
-			firstName: "Jack",
-			lastName: "Doe",
-			course: "Python",
-		},
-		{
-			id: "5",
-			firstName: "Daniel",
-			lastName: "Doe",
-			course: "Python",
-		},
-	]);
+	const [students, setStudents] = useState([]);
 
 	const [searchText, setSearchText] = useState("");
 
@@ -65,7 +34,7 @@ const Content = () => {
 							student.course.toLowerCase() === searchText.toLowerCase()
 					)}
 					header={"Search Result - " + searchText}
-                    deleteHandler={deleteHandler}
+					deleteHandler={deleteHandler}
 				/>
 			)}
 		</div>
