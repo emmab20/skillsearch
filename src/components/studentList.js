@@ -1,31 +1,25 @@
-import "../App.css";
+import { Link } from "react-router-dom";
 
-// const students = [
-// 	{
-// 		id: "1",
-// 		firstName: "John",
-// 		lastName: "Doe",
-// 		course: "MERN",
-// 	},
-// 	{
-// 		id: "2",
-// 		firstName: "Abby",
-// 		lastName: "Doe",
-// 		course: "Python",
-// 	},
-// ];
+import "../App.css";
 
 const StudentList = ({ students, header, deleteHandler }) => {
 	return (
 		<div className="student-list">
 			<h2 style={{ padding: "20px" }}>{header}</h2>
 			{students.map((student) => (
-				<div class="student-preview" key={student.id}>
-					<h2>
-						{student.firstName} {student.lastName}
-					</h2>
-					<p>Enrolled to {student.course}</p>
-					<button onClick={() => deleteHandler(student.id)}>Delete</button>
+				// <div className="student-preview" key={student.id}>
+				// 	<h2>
+				// 		{student.firstName} {student.lastName}
+				// 	</h2>
+				// 	<p>Enrolled to {student.course}</p>
+				// 	<button onClick={() => deleteHandler(student.id)}>Delete</button>
+				// </div>
+				<div className="student-preview" key={student.id}>
+					<Link to={`/students/${student.id}`}>
+						<h2>
+							{student.firstName} {student.lastName}
+						</h2>
+					</Link>
 				</div>
 			))}
 		</div>

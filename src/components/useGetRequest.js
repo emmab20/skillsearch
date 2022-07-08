@@ -6,7 +6,9 @@ const useGetRequest = (path) => {
 	const [errorMessage, setErrorMessage] = useState("");
 
 	useEffect(() => {
-		fetch(path)
+		const abortController = new AbortController();
+
+		fetch(path, { signal: abortController.signal })
 			.then((body) => {
 				if (!body.ok) {
 					console.log("error");
@@ -22,11 +24,14 @@ const useGetRequest = (path) => {
 				setErrorMessage("");
 			})
 			.catch((e) => {
-				console.log(e);
-				setErrorMessage(e.message);
-				setData([]);
-				setIsLoading(false);
+				if (e.name !== "AbortError") {
+					setErrorMessage(e.message);
+					setData([]);
+					setIsLoading(false);
+				}
 			});
+
+		return () => abortController.abort();
 	}, [path]);
 
 	return { data, isLoading, errorMessage };
