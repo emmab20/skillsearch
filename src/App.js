@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import NavBar from "./components/navbar";
 import Content from "./components/content";
 import StudentDetails from "./components/studentdetails";
+import StudentCreate from "./components/studentcreate";
 
 function App() {
 	return (
@@ -12,11 +13,7 @@ function App() {
 				<Routes>
 					<Route
 						path="/create"
-						element={
-							<div>
-								<h1>Create New Student</h1>
-							</div>
-						}
+						element={<StudentCreate></StudentCreate>}
 					></Route>
 					<Route path="/list" element={<Content />}></Route>
 					<Route
