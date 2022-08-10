@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const StudentCreate = () => {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
-	const [course, setCourse] = useState("");
+	const [course, setCourse] = useState("python");
 	const navigate = useNavigate();
 
 	const createStudent = (e) => {
@@ -16,7 +16,7 @@ const StudentCreate = () => {
 			course: course,
 		};
 
-		fetch("http://localhost:7000/students/", {
+		fetch("/students/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

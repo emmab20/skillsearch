@@ -7,15 +7,13 @@ const StudentDetails = () => {
 		data: student,
 		isLoading,
 		errorMessage,
-	} = useGetRequest("http://localhost:7000/students/" + id);
+	} = useGetRequest("/students/" + id);
 	const navigate = useNavigate();
 
 	const deleteStudent = () => {
-		fetch("http://localhost:7000/students/" + id, { method: "DELETE" }).then(
-			() => {
-				navigate("/list");
-			}
-		);
+		fetch("/students/" + id, { method: "DELETE" }).then(() => {
+			navigate("/list");
+		});
 	};
 
 	return (

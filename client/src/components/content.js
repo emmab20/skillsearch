@@ -10,10 +10,10 @@ const Content = () => {
 		data: students,
 		isLoading,
 		errorMessage,
-	} = useGetRequest("http://localhost:7000/students/");
+	} = useGetRequest(`/students`);
 
 	const deleteHandler = (id) => {
-		const list = students.filter((student) => student.id !== id);
+		const list = students.filter((student) => student._id !== id);
 	};
 
 	return (

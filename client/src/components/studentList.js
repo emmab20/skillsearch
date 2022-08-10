@@ -14,8 +14,8 @@ const StudentList = ({ students, header, deleteHandler }) => {
 				// 	<p>Enrolled to {student.course}</p>
 				// 	<button onClick={() => deleteHandler(student.id)}>Delete</button>
 				// </div>
-				<div className="student-preview" key={student.id}>
-					<Link to={`/students/${student.id}`}>
+				<div className="student-preview" key={student._id}>
+					<Link to={`/students/${student._id}`}>
 						<h2>
 							{student.firstName} {student.lastName}
 						</h2>
