@@ -5,6 +5,8 @@ const express = require("express");
 const students = require("./students");
 const cors = require("cors");
 
+const path = require("path");
+
 const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost:27017/";
 const PORT = process.env.PORT || 7000;
 
@@ -24,10 +26,6 @@ mongoose
 		app.listen(PORT, () => {
 			console.log(`server has started - port: ${PORT}`);
 		});
-
-		if (process.env.NODE_ENV === "production") {
-			app.use(express.static("client/build"));
-		}
 
 		// will retrieve the students page and display all students
 		app.get("/students", async (req, res) => {
@@ -111,4 +109,12 @@ mongoose
 				res.status(404);
 			}
 		});
+
+		if (process.env.NODE_ENV === "production") {
+			app.use(express.static("client/build"));
+
+			app.get("*", (req, res) => {
+				res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+			});
+		}
 	});
